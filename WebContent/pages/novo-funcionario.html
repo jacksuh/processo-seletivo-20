@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<title>Cadastrar um novo Produto </title>
+	<link rel="stylesheet" type="text/css"
+		href="../resources/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/main.css">
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<a href="/funcionarios/index.html">Voltar</a>
+
+<div id="app">
+	<p>{{msg}}</p>
+	
+	<h4>Cadastro de funcionário</h4>
+		
+	<p>Implementar o cadastro de funcionário</p>	
+	
+	
+	<form method="post" onsubmit="return validarCampos()? true : false;">
+	  <div class="mb-3">
+	    <label for="nome" class="form-label">Nome</label>
+	    <input type="text" class="form-control" id="nome" name="nome">
+	  </div>
+	  <div class="mb-3">
+	    <label for="setor" class="form-label">Setor</label>
+	    <input type="text" class="form-control" id="setor" name="setor">
+	  </div>
+	   <div class="mb-3">
+	    <label for="salario" class="form-label">Salario</label>
+	    <input type="text" class="form-control" id="salario" name="salario">
+	  </div>
+	   <div class="mb-3">
+	    <label for="email" class="form-label">Email</label>
+	    <input type="text" class="form-control" id="email" name="email">
+	  </div>
+	   <div class="mb-3">
+	    <label for="Idade" class="form-label">Idade</label>
+	    <input type="text" class="form-control" id="idade" name="idade">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Salvar</button>
+	</form>
+	
+</div>
+
+	<script src="../resources/js/vue.js"></script>
+	<script src="../resources/js/axios.min.js"></script>
+	<script src="../resources/js/cadastro-de-funcionario.js"></script>
+	<script src="../resources/js/validacao.js"></script>
+</body>
+</html>
