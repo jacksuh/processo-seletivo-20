@@ -1,6 +1,7 @@
 package com.hepta.funcionarios.rest;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,12 +97,18 @@ public class FuncionarioService {
 	 * 
 	 * @param id: id do Funcionario
 	 * @return response 200 (OK) - Conseguiu remover
+	 * @throws Exception 
 	 */
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@DELETE
-	public Response FuncionarioDelete(@PathParam("id") Integer id) {
-		return Response.status(Status.NOT_IMPLEMENTED).build();
+	public Response FuncionarioDelete(@PathParam("id") Integer id) throws Exception {
+		Funcionario funcionario = dao.find(id);
+		
+		dao = new FuncionarioDAO();
+		dao.delete(funcionario.getId());
+		
+		return Response.status(Status.OK).build();
 	}
 
 }
