@@ -42,7 +42,7 @@ class FuncionarioServiceTest {
 	
 	private FuncionarioDAO dao;
 	private SetorDAO daoSetor;
-	private Funcionario novoFuncionario;
+
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -51,6 +51,7 @@ class FuncionarioServiceTest {
 	
 	@Test
 	void testFuncionarioRead() throws Exception {
+		//Confirma se possui uma lista no Banco e Dados.
 		List<Funcionario> funcionarios = new ArrayList<>();
 		
 		dao = new FuncionarioDAO();
@@ -61,12 +62,14 @@ class FuncionarioServiceTest {
 
 	@Test
 	void testFuncionarioCreate() throws Exception {
+		//Cadastro do Setor
 		Setor novoSetor = new Setor();
 		novoSetor.setNome("RH");
 		
 		daoSetor = new SetorDAO();
 		daoSetor.save(novoSetor);
 		
+		//Cadastro de funcionario
 		Funcionario novoFuncionario = new Funcionario();
 		novoFuncionario.setNome("Jackson");
 		novoFuncionario.setEmail("jackson@jackson");
@@ -86,11 +89,21 @@ class FuncionarioServiceTest {
 
 	@Test
 	void testFuncionarioUpdate() throws Exception {
+		//Cadastro do Setor
+		Setor novoSetor = new Setor();
+		novoSetor.setNome("FINANCEIRO");
+		
+		daoSetor = new SetorDAO();
+		daoSetor.save(novoSetor);
+		
+		//Cadastro de funcionario
+		
 		Funcionario novoFuncionario = new Funcionario();
 		novoFuncionario.setNome("Jackson");
 		novoFuncionario.setEmail("jackson@jackson");
 		novoFuncionario.setIdade(33);
 		novoFuncionario.setSalario(300.00);
+		novoFuncionario.setSetor(novoSetor);
 		
 		dao = new FuncionarioDAO();
 		dao.save(novoFuncionario);
@@ -109,16 +122,42 @@ class FuncionarioServiceTest {
 		
 		assertEquals("Jackson Silva", fAtualizado.getNome());
 		assertEquals(500.00, fAtualizado.getSalario());
+		
+		//Atualização do Setor
+		
+		Integer idSetor = novoSetor.getId();
+		
+		Setor s = daoSetor.find(idSetor);
+		
+		s.setNome("RH");
+		
+		daoSetor = new SetorDAO();
+		daoSetor.update(s);
+		
+		Setor sAtualizado = daoSetor.find(idSetor);
+		
+		assertEquals("RH", sAtualizado.getNome());
+		
 	}
 
 	@Test
 	void testFuncionarioDelete() throws Exception {
+		//Cadastro do Setor
+		Setor novoSetor = new Setor();
+		novoSetor.setNome("TI");
+		
+		daoSetor = new SetorDAO();
+		daoSetor.save(novoSetor);
+		
+		//Cadastro de funcionario
 		Funcionario novoFuncionario = new Funcionario();
 		novoFuncionario.setNome("Jackson");
 		novoFuncionario.setEmail("jackson@jackson");
 		novoFuncionario.setIdade(33);
 		novoFuncionario.setSalario(300.00);
+		novoFuncionario.setSetor(novoSetor);
 		
+		//Confirmar se o cadastro do funcionario foi deletado.
 		dao = new FuncionarioDAO();
 		dao.save(novoFuncionario);
 		
@@ -129,6 +168,16 @@ class FuncionarioServiceTest {
 		Funcionario f = dao.find(id);
 		
 		assertNull(f);
+		
+		//Confirmar se o cadastro do setor foi deletado.
+		Integer idSetor = novoSetor.getId();
+		
+		daoSetor = new SetorDAO();
+		daoSetor.delete(idSetor);
+		
+		Setor s = daoSetor.find(idSetor);
+		
+		assertNull(s);
 		
 	}
 
