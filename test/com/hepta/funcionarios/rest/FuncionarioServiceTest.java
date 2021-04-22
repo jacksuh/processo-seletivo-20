@@ -33,6 +33,7 @@ import org.junit.*;
 import com.hepta.funcionarios.entity.Funcionario;
 import com.hepta.funcionarios.entity.Setor;
 import com.hepta.funcionarios.persistence.FuncionarioDAO;
+import com.hepta.funcionarios.persistence.SetorDAO;
 
 
 
@@ -40,6 +41,7 @@ class FuncionarioServiceTest {
 
 	
 	private FuncionarioDAO dao;
+	private SetorDAO daoSetor;
 	private Funcionario novoFuncionario;
 	
 	@BeforeAll
@@ -59,15 +61,20 @@ class FuncionarioServiceTest {
 
 	@Test
 	void testFuncionarioCreate() throws Exception {
+		Setor novoSetor = new Setor();
+		novoSetor.setNome("RH");
+		
+		daoSetor = new SetorDAO();
+		daoSetor.save(novoSetor);
+		
 		Funcionario novoFuncionario = new Funcionario();
 		novoFuncionario.setNome("Jackson");
 		novoFuncionario.setEmail("jackson@jackson");
 		novoFuncionario.setIdade(33);
 		novoFuncionario.setSalario(300.00);	
-		//Setor novoSetor = setorDao.getId();
+		novoFuncionario.setSetor(novoSetor);
 		
-		//novoFuncionario.setSetor(novoSetor);
-		
+						
 		dao = new FuncionarioDAO();
 		dao.save(novoFuncionario);
 		

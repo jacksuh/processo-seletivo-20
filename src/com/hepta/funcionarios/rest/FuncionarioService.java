@@ -53,6 +53,8 @@ public class FuncionarioService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
 	public Response FuncionarioCreate(Funcionario Funcionario) {
+		
+		
 		return Response.status(Status.NOT_IMPLEMENTED).build();
 	}
 
