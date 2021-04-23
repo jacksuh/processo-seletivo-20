@@ -16,7 +16,8 @@
 <body>
 
 
-	<div id="inicio" class="container-fluid table" >
+	<div id="inicio" class="container-fluid table d-flex w-100 flex-column justify-content-center align-items-center">
+		
 		<h4>Lista dos Funcionários</h4>
 		<table>
 		  <tr>
@@ -36,7 +37,7 @@
 			  <td>{{ funcionario.email }}</td> 
 			  <td>{{ funcionario.idade }}</td>
 			  <td><span @click="">&#9998;</span>
-				<span  @click="">&#10006;</span>
+				<button  @click.prevent="apagar(resultado)">&#10006;</button>
 			  </td>
 			</tr>
 		  </tbody>
@@ -50,5 +51,6 @@
 	<script src="resources/js/vue.js"></script>
 	<script src="resources/js/axios.min.js"></script>
 	<script src="resources/js/index.js"></script>
+
 </body>
 </html>
