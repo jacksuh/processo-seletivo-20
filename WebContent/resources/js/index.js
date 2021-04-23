@@ -20,7 +20,7 @@ var inicio = new Vue({
 			axios.get("/funcionarios/rs/funcionarios")
 			.then(response => { vm.listaProdutos = response.data;
 			}).catch(function (error) {
-				vm.mostraAlertaErro("Erro interno", "Não foi listar natureza de serviços");
+				vm.mostraAlertaErro("Erro interno", "Não foi listar os Funcionarios");
 			}).finally(function() {
 			});
 		},

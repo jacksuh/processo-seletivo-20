@@ -36,8 +36,8 @@
 			  <td>{{ funcionario.salario }}</td> 
 			  <td>{{ funcionario.email }}</td> 
 			  <td>{{ funcionario.idade }}</td>
-			  <td><span @click="">&#9998;</span>
-				<button  @click.prevent="apagar(resultado)">&#10006;</button>
+			  <td><button @click="atualizar()">&#9998;</button>
+				<button  @click="apagar()">&#10006;</button>
 			  </td>
 			</tr>
 		  </tbody>
