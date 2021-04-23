@@ -8,26 +8,28 @@
 	<link rel="stylesheet" type="text/css"
 		href="../resources/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css"
-		href="resources/css/main.css">
+		href="../resources/css/main.css">
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+            
 </head>
 
 <body>
 
-<a href="/funcionarios/index.html">Voltar</a>
 
-<div id="app">
+
+<div id="app" class="d-flex w-100 flex-column justify-content-center align-items-center">
+	<a id="voltar" href="/funcionarios/index.html"><i class="fas fa-arrow-left mr-2"></i>Voltar</a>
 	<p>{{msg}}</p>
 	
-	<h4>Cadastro de funcionário</h4>
-		
-	<p>Implementar o cadastro de funcionário</p>	
+	
+	<h2 class="h1">Cadastro de funcionário</h2>
 	
 	
-	<form method="post" onsubmit="return validarCampos()? true : false;">
-	  <div class="row mb-4">
+	<form class="w-50 p-5 card " method="post" onsubmit="return validarCampos()? true : false;">
+	  <div class="mb-4">
 	    <label for="nome" class="form-label">Nome</label>
 	    <input type="text" class="form-control" id="nome" name="nome">
 	  </div>
@@ -47,7 +49,7 @@
 	    <label for="Idade" class="form-label">Idade</label>
 	    <input type="text" class="form-control" id="idade" name="idade">
 	  </div>
-	  <button type="submit" class="btn btn-primary">Salvar</button>
+	  <button type="submit" class="btn btn-primary p-2">Salvar</button>
 	</form>
 	
 </div>

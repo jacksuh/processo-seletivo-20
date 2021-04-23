@@ -47,15 +47,19 @@ public class FuncionarioService {
 	 * 
 	 * @param Funcionario: Novo Funcionario
 	 * @return response 200 (OK) - Conseguiu adicionar
+	 * @throws Exception 
 	 */
-	@Path("/novofuncionario")
+	@Path("/novo")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
-	public Response FuncionarioCreate(Funcionario Funcionario) {
+	public Response FuncionarioCreate(Funcionario Funcionario) throws Exception {
+		Funcionario novo = Funcionario;
 		
+		dao = new FuncionarioDAO();
+		dao.save(novo);
 		
-		return Response.status(Status.NOT_IMPLEMENTED).build();
+		return Response.status(Status.OK).build();
 	}
 
 	/**
@@ -78,6 +82,25 @@ public class FuncionarioService {
 		};
 		return Response.status(Status.OK).entity(entity).build();
 	}
+	
+	/**
+	 * Pesquisa um Funcionario
+	 * 
+	 * @param id:          id do Funcionario
+	 * @param Funcionario: Funcionario atualizado
+	 * @return response 200 (OK) - Pesquisa
+	 */
+	@Path("/edit/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	public Response FuncionarioFind(@PathParam("id") Integer id) throws Exception{
+		Funcionario funcionario = dao.find(id);
+		
+		GenericEntity<Funcionario> entity = new GenericEntity<Funcionario>(funcionario) {
+		};
+		return Response.status(Status.OK).entity(entity).build();
+	}
+	
 
 	/**
 	 * Atualiza um Funcionario
@@ -91,7 +114,15 @@ public class FuncionarioService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@PUT
 	public Response FuncionarioUpdate(@PathParam("id") Integer id, Funcionario Funcionario) {
-		return Response.status(Status.NOT_IMPLEMENTED).build();
+		try {
+			Funcionario funcionario = dao.find(id);
+			dao = new FuncionarioDAO();
+			dao.update(funcionario);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Funcionario não Encontrado").build();
+		}
+		
+		return Response.status(Status.OK).build();
 	}
 
 	/**
@@ -101,7 +132,7 @@ public class FuncionarioService {
 	 * @return response 200 (OK) - Conseguiu remover
 	 * @throws Exception 
 	 */
-	@Path("/{id}")
+	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@DELETE
 	public Response FuncionarioDelete(@PathParam("id") Integer id) throws Exception {

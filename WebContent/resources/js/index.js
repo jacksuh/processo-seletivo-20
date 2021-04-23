@@ -18,7 +18,7 @@ var inicio = new Vue({
         buscaProdutos: function(){
 			const vm = this;
 			axios.get("/funcionarios/rs/funcionarios")
-			.then(response => {vm.listaProdutos = response.data;
+			.then(response => { vm.listaProdutos = response.data;
 			}).catch(function (error) {
 				vm.mostraAlertaErro("Erro interno", "Não foi listar natureza de serviços");
 			}).finally(function() {
