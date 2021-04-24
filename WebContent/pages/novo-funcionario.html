@@ -20,7 +20,7 @@
 
 
 
-<div id="app" class="d-flex w-100 flex-column justify-content-center align-items-center">
+<div class="d-flex w-100 flex-column justify-content-center align-items-center">
 	<a id="voltar" href="/funcionarios/index.html"><i class="fas fa-arrow-left mr-2"></i>Voltar</a>
 	<p>{{msg}}</p>
 	
@@ -28,7 +28,7 @@
 	<h2 class="h1">Cadastro de Funcionário</h2>
 	
 	
-	<form class="w-50 p-5 card " method="post" onsubmit="return validarCampos()? true : false;">
+	<form class="w-50 p-5 card " method="post" @submit.prevent="postNow" onsubmit="return validarCampos()? true : false;">
 	  <div class="mb-4">
 	    <label for="nome" class="form-label">Nome</label>
 	    <input type="text" class="form-control" id="nome" name="nome">
@@ -53,6 +53,30 @@
 	</form>
 	
 </div>
+
+	<script>
+	export default {
+		nome: 'formPost',
+    data(){
+        return {
+            form: {
+                nome: '',
+                setor: '',
+                salario: '',
+                email: '',
+                idade: ''
+            }
+        }
+    },
+    methods: {
+        submit(){
+            axios.post('/funcionarios/rs/novo', this.form)
+                .then(function( response ){
+                }.bind(this));
+        	}
+    	}
+	}
+	</script>
 
 	<script src="../resources/js/vue.js"></script>
 	<script src="../resources/js/axios.min.js"></script>
