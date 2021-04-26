@@ -15,5 +15,6 @@ Podendo adicionar pelo console administrativo do servidor, jboss, weblogic, etc,
 
 #Testes
 
-Os testes foram escritos para testar as funcionalidades de conexão com o banco de dados, salvar, atualizar, deletar informações.
+Os testes foram escritos para testar as funcionalidades de conexão com o banco de dados, Salvar, Atualizar, Deletar.
+Utilizando o jUnit 5.
 
