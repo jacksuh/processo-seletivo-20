@@ -13,6 +13,9 @@ Após exportar com o arquivo você ira fazer o deploy em um servidor de aplicação 
 Podendo adicionar pelo console administrativo do servidor, jboss, weblogic, etc, subir o arquivo exportado pelo Eclipse.
 
 
+Acessar a Url com a porta definida no servidor de aplicação.
+
+
 #Testes
 
 Os testes foram escritos para testar as funcionalidades de conexão com o banco de dados, Salvar, Atualizar, Deletar.
