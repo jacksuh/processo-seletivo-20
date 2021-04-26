@@ -7,6 +7,8 @@ Aplicação JAVA e Vue.js, para rodar no ambiente seguir os passos.
 
 Selecione o projeto click com o botão direito Export War
 
+![Funcionario](https://github.com/jacksuh/processo-seletivo-20/blob/master/export.PNG)<p>
+
 Após exportar com o arquivo você ira fazer o deploy em um servidor de aplicação ou container Web.
 Podendo adicionar pelo console administrativo do servidor, jboss, weblogic, etc, subir o arquivo exportado pelo Eclipse.
 
